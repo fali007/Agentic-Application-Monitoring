@@ -9,7 +9,7 @@
 Run `pip install -r requirements.txt`
 
 ### Setting up Traceloop
-1. Clone the traceloop fork : https://github.com/fali007/openllmetry/tree/main
+1. Clone the traceloop github : https://github.com/traceloop/openllmetry
 
 Install the required packages
 1. Traceloop-SDK
@@ -66,4 +66,5 @@ command : `python weather.py`
 
 ## RUN Agent
 Set creadentials for `ChatOpenAI` in environment variables.
+
 command : `python agent.py`
