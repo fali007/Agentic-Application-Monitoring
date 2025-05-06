@@ -13,7 +13,7 @@ model = ChatOpenAI(model="meta-llama/llama-3-3-70b-instruct")
 prompt = "You are a helpful assistant capable of getting weather forecast and weather alerts. You are provided with state or co-ordinates. Call relavant tools to complete the input task and return summarised response"
 mcp_server_url = "http://0.0.0.0:8000/sse"
 
-class MCPServer:
+class MCPClient:
     async def connect_to_sse_server(self, url):
         self.stream_context = sse_client(url = url)
         streams = await self.stream_context.__aenter__()
@@ -29,7 +29,7 @@ class MCPServer:
 
 @workflow(name="instana_agent_workflow")
 async def run_agent():
-    mcp_server = MCPServer()
+    mcp_server = MCPClient()
     await mcp_server.connect_to_sse_server(mcp_server_url)
     tools = await load_mcp_tools(mcp_server.session)
     print(f"Tool list : {tools}")
