@@ -14,6 +14,14 @@ prompt = "You are a helpful assistant capable of getting weather forecast and we
 mcp_server_url = "http://0.0.0.0:8000/sse"
 
 class MCPClient:
+    """
+    Connect to an SSE server.
+    Parameters:
+    url (str): The URL of the SSE server to connect to.
+
+    Returns:
+    ClientSession: The initialized ClientSession object.
+    """
     async def connect_to_sse_server(self, url):
         self.stream_context = sse_client(url = url)
         streams = await self.stream_context.__aenter__()
